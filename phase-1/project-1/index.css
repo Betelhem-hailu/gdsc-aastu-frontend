@@ -1,0 +1,20 @@
+*{
+    margin: 15px;
+    padding: auto;
+    background-color: rgb(103, 214, 140);
+    font-size: x-large;
+}
+.title{
+    text-align: center;
+    font-size: 200%;  
+}
+.about{
+    color: azure;
+    font-size: 200%;
+    text-align: center;
+}
+section{
+  box-shadow: 5px 3px 25px 5px rgb(164, 255, 164);
+  box-decoration-break:clone;
+  
+}
