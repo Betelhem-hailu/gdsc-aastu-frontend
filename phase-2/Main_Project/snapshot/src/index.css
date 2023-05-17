@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=GFS+Neohellenic&display=swap');
+
+
+:root{
+   --font-main: 'Dancing Script', cursive;
+  --color-black: rgb(0, 0, 0);
+  --color-eminence: #783f8e;
+  --color-seashell: #DB7F8E;
+  --color-bittersweet: #FF6663;
+  --color-vistablue: #7699d4;
+  --color-white: #ffffff;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+li {
+  list-style: none;
+}
+
+.page__form{
+  padding: 1rem 5rem;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.head-text{
+  font-family: var(--font-main);
+  font-size: 50px;
+  color: var(--color-eminence);
+}
