@@ -1,12 +1,10 @@
-// import React, { useState } from "react";
+// import { useState } from "react";
 // import { useQuery } from "@tanstack/react-query";
 // import { Result } from "./api/posts";
 // import { getPosts } from "../api/posts";
 
-
 export const Search = (items, menuItems, searchParam, q) => {
- 
-  return items.filter((item) => {
+  return (items.filter((item) => {
     if (item.temprature_type === menuItems) {
       return searchParam.some((newItem) => {
         return (
@@ -20,8 +18,8 @@ export const Search = (items, menuItems, searchParam, q) => {
         );
       });
     }
-  });
-}
+  }))
+};
 
 export const Filter = (temperature_type, items, setItem) => {
   const newItem = items.filter((newVal) => {

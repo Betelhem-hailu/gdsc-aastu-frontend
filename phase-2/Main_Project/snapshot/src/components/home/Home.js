@@ -3,14 +3,18 @@ import { useQuery } from "@tanstack/react-query";
 import { getPosts } from "../api/posts";
 import { Navbar, Post, Search } from "../index";
 import { Box } from "@mui/material";
-import { Result } from "../api/posts";
+import SearchButton from "./search/SearchButton";
 
 const Home = () => {
   const [menuItems, setMenuItems] = useState([]);
+  const [items, setItem] = useState();
+  const [filterParam, setFilterParam] = useState(["All"])
+  const {data}  = useQuery({
+    queryKey: ["posts"],
+    queryFn: getPosts,
+    onSuccess: (data) => setItem(data),
+  });
 
-  const {data, isLoading, error} = Result();
-
-  const [items, setItem] = useState(data);
   const results = useQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
@@ -23,9 +27,10 @@ const Home = () => {
 
   return (
     <Box>
-      <Search />
-      <Navbar setItem={setItem}  menuItems={menuItems} items={items} />
-      <Post   items={items} menuItems={menuItems}/>
+      <SearchButton items={data} filterParam={filterParam} />
+      {/*<Search items={items} menuItems={menuItems} searchParam={searchParam} />*/}{" "}
+      <Navbar setFilterParam={setFilterParam} menuItems={menuItems} />
+      <Post menuItems={menuItems} />
     </Box>
   );
 };

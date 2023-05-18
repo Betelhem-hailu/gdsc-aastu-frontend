@@ -6,7 +6,6 @@ const News = () => {
   const { isLoading, error, data } = Output();
 
  
-
   return (
     <Box sx={{ mt: { lg: "10px" } }} mt="10px" p="20px" ml="90px">
     <Typography

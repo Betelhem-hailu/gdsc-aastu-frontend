@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Stack, Button } from "@mui/material";
-import { Filter } from "../../HandleFunc";
 
 
-const Navbar = ({setItem, menuItems, items }) => {
 
+const Navbar = ({setFilterParam, menuItems}) => {
+
+  // const filterparam = (temperature_type) => {
+  //   const newItem = items.filter((newVal) => {
+  //     return newVal.temperature_type === temperature_type;
+  //   });
+  //   setItem(newItem);
+  // };
   
   return (
     <Stack direction="row" spacing={8} justifyContent="center" ml="50px">
       <Button
         variant="contained"
-        onClick={(val) => setItem(val) }
+        onClick={(val) => setFilterParam(val) }
         sx={{
           background: "#7699d4",
           ":hover": {
@@ -30,7 +36,7 @@ const Navbar = ({setItem, menuItems, items }) => {
                 background: "#7699d4",
               },
             }}
-            onClick={() => Filter(Val, items, setItem)}
+            onClick={() => setFilterParam(Val)}
             key={menuItems.flora_type}
           >
             {Val}
