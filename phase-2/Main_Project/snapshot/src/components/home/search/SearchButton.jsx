@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Box, Typography, Stack, TextField, Button } from "@mui/material";
-import Search from "./Search";
-function SearchButton(items, filterParam) {
-  const [q, setQ] = useState("");
+import { SearchContext } from "./DataContext";
+function SearchButton({posts}) {
+  const {setSearchQuery, searchQuery,handleSearch} = useContext(SearchContext);
   return (
     <Stack alignItems="center" mt="10px" justifyContent="center" p="10px">
       <Typography
@@ -24,9 +24,10 @@ function SearchButton(items, filterParam) {
             borderRadius: "40px",
           }}
           height="70px"
-          value={q}
+          value={searchQuery}
           onChange={(event) => {
-            setQ(event.target.value);
+            setSearchQuery(event.target.value);
+            handleSearch(posts);
           }}
           placeholder="Start typing... "
           type="text"
@@ -46,7 +47,6 @@ function SearchButton(items, filterParam) {
         >
           Search
         </Button>
-        <Search items={items} filterParam={filterParam} q={q} />
       </Box>
     </Stack>
 

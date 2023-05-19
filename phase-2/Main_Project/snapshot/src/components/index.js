@@ -5,8 +5,8 @@ import Post from './home/post/Post';
 import Header from './user/header/Header';
 import Body from './user/body/Body';
 
-import Login from './user/login/Login';
-import SignUp from './user/login/Signup';
+import Login from './login/Login';
+import SignUp from './login/Signup';
 
 import About from './about/About';
 import News from './news/News';

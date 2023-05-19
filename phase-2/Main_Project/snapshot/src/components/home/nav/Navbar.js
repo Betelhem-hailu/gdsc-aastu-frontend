@@ -1,22 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Stack, Button } from "@mui/material";
+import { SearchContext } from "../search/DataContext";
 
 
 
-const Navbar = ({setFilterParam, menuItems}) => {
-
-  // const filterparam = (temperature_type) => {
-  //   const newItem = items.filter((newVal) => {
-  //     return newVal.temperature_type === temperature_type;
-  //   });
-  //   setItem(newItem);
-  // };
+const Navbar = ({menuItems, posts}) => {
+  const {setFilteredBy, handleSearch} = useContext(SearchContext);
   
   return (
     <Stack direction="row" spacing={8} justifyContent="center" ml="50px">
       <Button
         variant="contained"
-        onClick={(val) => setFilterParam(val) }
+        onClick={() =>{
+          setFilteredBy("All")
+          handleSearch(posts);
+        }}
         sx={{
           background: "#7699d4",
           ":hover": {
@@ -36,7 +34,10 @@ const Navbar = ({setFilterParam, menuItems}) => {
                 background: "#7699d4",
               },
             }}
-            onClick={() => setFilterParam(Val)}
+            onClick={() => {
+              setFilteredBy(Val)
+              handleSearch(posts);
+            }}
             key={menuItems.flora_type}
           >
             {Val}

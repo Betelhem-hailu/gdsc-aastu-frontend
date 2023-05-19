@@ -9,6 +9,7 @@ export default function App() {
     <div>
       <h1 className="head">TODO LIST</h1>
       <div className="List">
+      <InputField />
       <Todo />
       </div>
     </div>

@@ -1,49 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsDownload, BsEye } from "react-icons/bs";
-import { getPosts } from "../../api/posts";
 import { Box, Stack, Typography, Grid, Card, CardMedia, CardContent, Button } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
-import { Search } from "../search/Search";
+import { SearchContext } from "../search/DataContext";
 
 const Post = (menuItems) => {
-
-  const posts =  useQuery({
-      queryKey: ['posts'],
-      queryFn: getPosts,
-      // onSuccess:(data)=>{
-      //   const items = data.map();
-      // }
-    })
-
-    function search (data, menuItems, q){
-    const searchParam = ["title"];
-    return data.filter((item) => {
-      if (item.temprature_type === menuItems) {
-        return searchParam.some((newItem) => {
-          return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
-          );
-        });
-      } else if (menuItems === "All") {
-        return searchParam.some((newItem) => {
-          return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
-          );
-        });
-      }
-    });
-  }
+    const {filteredLocations, setFilteredLocations} = useContext(SearchContext)
     return (
       <Box sx={{ mt: { lg: "70px" } }} mt="50px" p="20px" ml="100px">
-      {(posts.data &&
+      {(filteredLocations &&
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {search( posts.data , menuItems).map((item) => (
+          {filteredLocations.map((item) => (
             <Grid xs={2} sm={4} md={4}>
-              <Card sx={{ maxWidth: 345 }} key={item.title}>
+              <Card sx={{ maxWidth: 345, mb: '20px'}} key={item.title}>
                 <CardMedia
                   component="img"
                   height="194"

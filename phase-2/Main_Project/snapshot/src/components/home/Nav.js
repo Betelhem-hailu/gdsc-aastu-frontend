@@ -20,7 +20,7 @@ const Nav = () => {
           style={{
             textDecoration: "none",
             color: "#3A1212",
-            borderBottom: "3px solid #783f8e",
+            // borderBottom: "3px solid #783f8e",
           }}
         >
           Home
